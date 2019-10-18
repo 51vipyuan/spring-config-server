@@ -1,0 +1,29 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: spring-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/leozhang136/spring-config.git
+          search-paths: /**
+          username: leozhang136
+          password: zhangtong136
+#          uri: https://github.com/FunriLy/springcloud-study/ #git仓库地址
+#          search-paths: config-repo #配置仓库路径
+#          username: leozhang136
+#          password: zhangtong136
+#          basedir: D:/Config/basedir
+#          uri: https://github.com/ZetiG/SpringConfig/ #git仓库地址
+#          search-paths: SpringConfig #配置仓库路径
+      label: master
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://eureka.51vipyuan.com/eureka/
+#      defaultZone: http://localhost:8761/eureka/
